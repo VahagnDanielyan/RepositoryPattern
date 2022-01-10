@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 
-namespace RepositoryPattern
+namespace RepositoryPattern.ImplXml
 {
     public class BaseRepository<TEntity, TKey> : IBaseRepository<TEntity, TKey>
         where TEntity : class, IEntity<TKey>
     {
-        private Lazy<Dictionary<TKey, TEntity>> _dataFactory;
+        private readonly Lazy<Dictionary<TKey, TEntity>> _dataFactory;
 
         private readonly string _fileName;
         public BaseRepository(string fileName)

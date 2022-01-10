@@ -2,7 +2,7 @@
 using System.IO;
 using System.Xml.Serialization;
 
-namespace RepositoryPattern
+namespace RepositoryPattern.ImplXml
 {
     public static class XmlExtensions
     {
