@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.Extensions.Options;
+using System.Collections.Generic;
 
-namespace RepositoryPattern
+namespace RepositoryPattern.ImplXml
 {
     public class StudentRepository : BaseRepository<Student, int>, IStudentRepository
     {
 
-        public StudentRepository(string fileName) : base(fileName)
-        {
-
-        }
+        public StudentRepository(IOptionsSnapshot<RepositortOptions> options) : base(options)
+        { }
 
         public IEnumerable<Student> GetStudentsByGender(string gender)
         {
