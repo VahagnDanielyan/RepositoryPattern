@@ -1,6 +1,6 @@
 ﻿using RepositoryPattern;
 
-IStudentRepository source = new StudentRepository();
+IStudentRepository source = new StudentRepository($"{nameof(Student)}.xml");
 foreach (var st in StudentCreator.CreateStudents(10))
 {
     source.Insert(st);

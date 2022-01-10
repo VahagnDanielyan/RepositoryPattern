@@ -5,7 +5,7 @@ namespace RepositoryPattern
     public class StudentRepository : BaseRepository<Student, int>, IStudentRepository
     {
 
-        public StudentRepository() : base($"{nameof(Student)}.xml")
+        public StudentRepository(string fileName) : base(fileName)
         {
 
         }
