@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,13 +11,13 @@ namespace RepositoryPattern.ImplXml
         private readonly Lazy<Dictionary<TKey, TEntity>> _dataFactory;
 
         private readonly string _fileName;
-        public BaseRepository(string fileName)
+        public BaseRepository(IOptionsSnapshot<RepositortOptions> options)
         {
-            _fileName = fileName;
+            _fileName = options.Get(typeof(TEntity).Name).Filename;
             _dataFactory = new Lazy<Dictionary<TKey, TEntity>>(() =>
             {
                 return XmlExtensions
-                    .LoadFromXml<TEntity>(fileName)
+                    .LoadFromXml<TEntity>(_fileName)
                     .ToDictionary(p => p.Id);
             });
         }
